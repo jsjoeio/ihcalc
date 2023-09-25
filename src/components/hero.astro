@@ -2,6 +2,7 @@
 import { Picture } from "@astrojs/image/components";
 import heroImage from "assets/hero.png";
 import Link from "@components/ui/link.astro";
+import { MonthInput } from "./MonthInput";
 import { Icon } from "astro-icon";
 ---
 
@@ -24,7 +25,9 @@ import { Icon } from "astro-icon";
       How much do you want to make? 
     </h1>
     <p class="text-lg mt-4 text-slate-600 max-w-xl text-center">
-      I want to make <strong>$50,000</strong> in <strong>3 months</strong><br/> by selling 
+      I want to make <strong>$50,000</strong> in <strong><span aria-label="Number of Months">
+      <MonthInput />   
+      </span> months</strong><br/> by selling 
       a <strong>$50 course</strong>.
     </p>
     <button class="mt-6 mx-auto block px-12 py-4 rounded-lg font-bold bg-black text-white">

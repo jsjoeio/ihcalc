@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
-export function MonthInput() {
-  const [numMonths, setNumOfMonths] = useState(3);
+export function OfferingPrice() {
+  const [offeringPrice, setOfferingPrice] = useState(50);
 
   const handleInputChange = (e) => {
     const inputValue = parseInt(e.target.value);
 
     // Check if the input value is a number greater than 1
     if (!isNaN(inputValue) && inputValue > 1) {
-      setNumOfMonths(inputValue);
+      setOfferingPrice(inputValue);
     }
   };
 
@@ -16,9 +16,9 @@ export function MonthInput() {
     <input
       type="number"
       placeholder="3"
-      value={numMonths}
+      value={offeringPrice}
       onChange={handleInputChange}
-      className="w-10 px-2 py-1 inline-block text-center border border-gray-300 rounded"
+      className="w-12 px-2 py-1 inline-block text-center border border-gray-300 rounded"
     />
   );
 }

@@ -3,6 +3,7 @@ import { Picture } from "@astrojs/image/components";
 import heroImage from "assets/hero.png";
 import Link from "@components/ui/link.astro";
 import { MonthInput } from "./MonthInput";
+import {TotalMoneyWanted } from "./TotalMoneyWanted"
 import { Icon } from "astro-icon";
 ---
 
@@ -25,7 +26,8 @@ import { Icon } from "astro-icon";
       How much do you want to make? 
     </h1>
     <p class="text-lg mt-4 text-slate-600 max-w-xl text-center">
-      I want to make <strong>$50,000</strong> in <strong><span aria-label="Number of Months">
+      I want to make <strong>$<span aria-label="Total Money Wanted">
+        <TotalMoneyWanted /></span></strong> in <strong><span aria-label="Number of Months">
       <MonthInput />   
       </span> months</strong><br/> by selling 
       a <strong>$50 course</strong>.

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 
-export function Offering() {
-  const [selectedOffering, setSelectedOffering] = useState("product");
+import { useStore } from '@nanostores/react' // or '@nanostores/preact'
+import { $selectedOffering } from "@utils/store";
 
+export function Offering() {
+  const selectedOffering = useStore($selectedOffering)
   const handleOfferingChange = (e) => {
-    setSelectedOffering(e.target.value);
+    $selectedOffering.set(e.target.value);
   };
 
   return (

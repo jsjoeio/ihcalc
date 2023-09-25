@@ -1,14 +1,16 @@
 import React, { useState } from "react";
+import { useStore } from "@nanostores/react";
+import { $offeringPrice } from "@utils/store";
 
 export function OfferingPrice() {
-  const [offeringPrice, setOfferingPrice] = useState(50);
+  const offeringPrice = useStore($offeringPrice)
 
   const handleInputChange = (e) => {
     const inputValue = parseInt(e.target.value);
 
     // Check if the input value is a number greater than 1
     if (!isNaN(inputValue) && inputValue > 1) {
-      setOfferingPrice(inputValue);
+      $offeringPrice.set(inputValue);
     }
   };
 

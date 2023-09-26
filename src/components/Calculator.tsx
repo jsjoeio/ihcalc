@@ -66,28 +66,41 @@ function InitialFormWithInputs({
         </strong>
         .
       </p>
-      <ActionButton onClick={() => setState("calculated")} />
+      <ActionButton onClick={() => setState("calculated")} text="Show me how" />
     </div>
   );
 }
 
-function Strong({ text }: { text: string }) {
-  return <strong>{text}</strong>;
-}
+type TextCalculatedProps = {
+  reset: () => void;
+};
 
-function TextCalculated() {
+function TextCalculated({ reset }: TextCalculatedProps) {
   const totalMoney = useStore($totalMoneyWanted);
   const numOfMonths = useStore($numOfMonths);
   const selectedOffering = useStore($selectedOffering);
   const offeringPrice = useStore($offeringPrice);
+  const totalSales = 500;
+  const salesPerMonth = 167;
+  const conversionRate = "2%";
+  const monthlyVisitors = 8350;
 
   return (
     <div>
-      <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter text-center mb-12">
-        To make <Strong text={`$${totalMoney}`} /> in{" "}
-        <Strong text={String(numOfMonths)} /> months by selling a{" "}
-        <Strong text={`$${offeringPrice}`} /> <Strong text={selectedOffering} />
+      <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold lg:tracking-tight xl:tracking-tighter text-center mb-12">
+        To make ${totalMoney} in {String(numOfMonths)} months by selling a $
+        {offeringPrice} {selectedOffering}
       </h1>
+      <p className="text-center">
+        you need to make <strong>{totalSales} total sales</strong>, which is
+        roughly <strong>{salesPerMonth} sales per month</strong>. Assuming a{" "}
+        <strong>
+          {conversionRate}
+          conversion rate
+        </strong>
+        , you need around <strong>{monthlyVisitors} visitors per month</strong>
+      </p>
+      <ActionButton onClick={reset} text="Start over" />
     </div>
   );
 }
@@ -100,7 +113,8 @@ export function Calculator() {
 
   if (state === "error") return <p>Oh no</p>;
 
-  if (state === "calculated") return <TextCalculated />;
+  if (state === "calculated")
+    return <TextCalculated reset={() => setState("initial")} />;
 
   return null;
 }

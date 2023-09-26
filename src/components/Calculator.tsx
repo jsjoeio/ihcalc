@@ -10,6 +10,10 @@ import {
   $offeringPrice,
   $selectedOffering,
   $totalMoneyWanted,
+  getConversionRate,
+  getMonthlyVisitors,
+  getSalesPerMonth,
+  getTotalSales,
 } from "@utils/store";
 
 /*
@@ -76,14 +80,14 @@ type TextCalculatedProps = {
 };
 
 function TextCalculated({ reset }: TextCalculatedProps) {
-  const totalMoney = useStore($totalMoneyWanted);
-  const numOfMonths = useStore($numOfMonths);
+  const totalMoney = useStore($totalMoneyWanted).toLocaleString();
+  const numOfMonths = useStore($numOfMonths).toLocaleString();
   const selectedOffering = useStore($selectedOffering);
-  const offeringPrice = useStore($offeringPrice);
-  const totalSales = 500;
-  const salesPerMonth = 167;
-  const conversionRate = "2%";
-  const monthlyVisitors = 8350;
+  const offeringPrice = useStore($offeringPrice).toLocaleString();
+  const totalSales = getTotalSales().toLocaleString();
+  const salesPerMonth = getSalesPerMonth().toLocaleString();
+  const conversionRate = getConversionRate() * 100;
+  const monthlyVisitors = getMonthlyVisitors().toLocaleString();
 
   return (
     <div>
@@ -91,15 +95,16 @@ function TextCalculated({ reset }: TextCalculatedProps) {
         To make ${totalMoney} in {String(numOfMonths)} months by selling a $
         {offeringPrice} {selectedOffering}
       </h1>
-      <p className="text-center">
-        you need to make <strong>{totalSales} total sales</strong>, which is
-        roughly <strong>{salesPerMonth} sales per month</strong>. Assuming a{" "}
-        <strong>
-          {conversionRate}
-          conversion rate
-        </strong>
-        , you need around <strong>{monthlyVisitors} visitors per month</strong>
-      </p>
+      <div className="max-w-sm mx-auto text-center">
+        <p className="mb-4">
+          you need to make <strong>{totalSales} total sales</strong>, which is
+          roughly <strong>{salesPerMonth} sales per month</strong>.
+        </p>
+        <p>
+          Assuming a <strong>{conversionRate}% conversion rate</strong>, you
+          need around <strong>{monthlyVisitors} visitors per month</strong>
+        </p>
+      </div>
       <ActionButton onClick={reset} text="Start over" />
     </div>
   );

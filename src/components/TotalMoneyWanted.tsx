@@ -22,7 +22,7 @@ export function TotalMoneyWanted() {
       placeholder="50000"
       value={totalMoney}
       onChange={handleInputChange}
-      className="w-20 px-2 py-1 inline-block text-center border border-gray-300 rounded"
+      className="w-24 px-2 py-1 inline-block text-center border border-gray-300 rounded"
     />
   );
 }

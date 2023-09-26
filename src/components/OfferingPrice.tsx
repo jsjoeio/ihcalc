@@ -3,7 +3,7 @@ import { useStore } from "@nanostores/react";
 import { $offeringPrice } from "@utils/store";
 
 export function OfferingPrice() {
-  const offeringPrice = useStore($offeringPrice)
+  const offeringPrice = useStore($offeringPrice);
 
   const handleInputChange = (e) => {
     const inputValue = parseInt(e.target.value);
@@ -20,7 +20,7 @@ export function OfferingPrice() {
       placeholder="3"
       value={offeringPrice}
       onChange={handleInputChange}
-      className="w-12 px-2 py-1 inline-block text-center border border-gray-300 rounded"
+      className="w-16 px-2 py-1 inline-block text-center border border-gray-300 rounded"
     />
   );
 }

@@ -22,24 +22,5 @@ import { TextCalculated } from "./TextCalculated";
       format="avif"
     />
   </div>
-  <div>
-    <h1
-      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter text-center mb-12">
-      How much do you want to make?
-    </h1>
-    <p class="text-lg mt-4 text-slate-600 max-w-xl text-center">
-      I want to make <strong
-        >$<span aria-label="Total Money Wanted"><TotalMoneyWanted /></span
-        ></strong
-      > in <strong
-        ><span aria-label="Number of Months">
-          <MonthInput />
-        </span> months</strong
-      ><br /> by selling a <strong
-        >$<span aria-label="Price of offering"><OfferingPrice /></span>
-        <span aria-label="Offering"> <Offering /></span></strong
-      >.
-    </p>
-    <Calculator client:load />
-  </div>
+  <Calculator client:load />
 </main>

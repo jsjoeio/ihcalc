@@ -1,12 +1,12 @@
 ---
 import { Picture } from "@astrojs/image/components";
 import heroImage from "assets/hero.png";
-import Link from "@components/ui/link.astro";
 import { MonthInput } from "./MonthInput";
 import { TotalMoneyWanted } from "./TotalMoneyWanted";
+import { Calculator } from "./Calculator";
 import { OfferingPrice } from "./OfferingPrice";
-import {Offering} from "./Offering"
-import { Icon } from "astro-icon";
+import { Offering } from "./Offering";
+import { TextCalculated } from "./TextCalculated";
 ---
 
 <main
@@ -36,13 +36,10 @@ import { Icon } from "astro-icon";
           <MonthInput />
         </span> months</strong
       ><br /> by selling a <strong
-        >$<span aria-label="Price of offering"><OfferingPrice /></span> <span aria-label="Offering">
-          <Offering /></span></strong
+        >$<span aria-label="Price of offering"><OfferingPrice /></span>
+        <span aria-label="Offering"> <Offering /></span></strong
       >.
     </p>
-    <button
-      class="mt-6 mx-auto block px-12 py-4 rounded-lg font-bold bg-black text-white">
-      Show me how
-    </button>
+    <Calculator client:load />
   </div>
 </main>

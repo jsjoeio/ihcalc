@@ -16,7 +16,7 @@ export function TotalMoneyWanted() {
 
   return (
     <div className="flex flex-col">
-      <p className="text-lg mt-4 text-slate-600 max-w-xl text-center">
+      <p className="text-lg mt-4 max-w-xl text-center">
         I want to make
         <label
           className="block font-bold text-center"

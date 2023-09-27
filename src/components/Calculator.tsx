@@ -39,18 +39,12 @@ function InitialFormWithInputs({
 }: InitialFormWithInputsProps) {
   return (
     <div>
-      <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter text-center mb-12">
+      <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter text-center mb-4">
         How much do you want to make?
       </h1>
       <TotalMoneyWanted />
+      <MonthInput />
       <p>
-        in{" "}
-        <strong>
-          <span aria-label="Number of Months">
-            <MonthInput />
-          </span>{" "}
-          months
-        </strong>
         <br /> by selling a{" "}
         <strong>
           $

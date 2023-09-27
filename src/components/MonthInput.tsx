@@ -10,18 +10,27 @@ export function MonthInput() {
     const inputValue = parseInt(e.target.value);
 
     // Check if the input value is a number greater than 1
-    if (!isNaN(inputValue) && inputValue > 1) {
+    if (!isNaN(inputValue) && inputValue > 0) {
       $numOfMonths.set(inputValue);
     }
   };
 
   return (
-    <input
-      type="number"
-      placeholder="3"
-      value={numOfMonths}
-      onChange={handleInputChange}
-      className="w-12 px-2 py-1 inline-block text-center border border-gray-300 rounded"
-    />
+    <div className="flex flex-col">
+      <p className="text-lg mt-4 text-slate-600 max-w-xl text-center">
+        in{" "}
+        <label className="font-bold text-center" htmlFor="num-of-months">
+          {numOfMonths.toLocaleString()} months
+        </label>
+      </p>
+      <input
+        type="range"
+        id="num-of-months"
+        name="num-of-months"
+        value={numOfMonths}
+        onChange={handleInputChange}
+        max={12}
+      />
+    </div>
   );
 }

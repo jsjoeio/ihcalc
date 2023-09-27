@@ -15,12 +15,22 @@ export function OfferingPrice() {
   };
 
   return (
-    <input
-      type="number"
-      placeholder="3"
-      value={offeringPrice}
-      onChange={handleInputChange}
-      className="w-16 px-2 py-1 inline-block text-center border border-gray-300 rounded"
-    />
+    <div className="flex flex-col">
+      <p className="text-lg mt-4 max-w-xl text-center">
+        by selling a{" "}
+        <label className="block font-bold text-center" htmlFor="offering-price">
+          ${offeringPrice.toLocaleString()} product.
+        </label>
+      </p>
+      <input
+        type="range"
+        id="offering-price"
+        name="offering-price"
+        value={offeringPrice}
+        onChange={handleInputChange}
+        step={5}
+        max={1000}
+      />
+    </div>
   );
 }

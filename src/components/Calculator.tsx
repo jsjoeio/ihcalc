@@ -44,20 +44,7 @@ function InitialFormWithInputs({
       </h1>
       <TotalMoneyWanted />
       <MonthInput />
-      <p>
-        <br /> by selling a{" "}
-        <strong>
-          $
-          <span aria-label="Price of offering">
-            <OfferingPrice />
-          </span>
-          <span aria-label="Offering">
-            {" "}
-            <Offering />
-          </span>
-        </strong>
-        .
-      </p>
+      <OfferingPrice />
       <ActionButton onClick={() => setState("calculated")} text="Show me how" />
     </div>
   );

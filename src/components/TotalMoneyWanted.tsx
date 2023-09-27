@@ -6,23 +6,34 @@ export function TotalMoneyWanted() {
   const totalMoney = useStore($totalMoneyWanted);
 
   const handleInputChange = (e) => {
-    console.log("inside input");
     const inputValue = parseInt(e.target.value.replace(/,/g, ""));
 
     // Check if the input value is a number greater than or equal to 0
     if (!isNaN(inputValue) && inputValue >= 0) {
       $totalMoneyWanted.set(inputValue);
-      console.log("set was called", inputValue);
     }
   };
 
   return (
-    <input
-      type="number"
-      placeholder="50000"
-      value={totalMoney}
-      onChange={handleInputChange}
-      className="w-24 px-2 py-1 inline-block text-center border border-gray-300 rounded"
-    />
+    <div className="flex flex-col">
+      <p className="text-lg mt-4 text-slate-600 max-w-xl text-center">
+        I want to make
+        <label
+          className="block font-bold text-center"
+          htmlFor="total-money-wanted">
+          ${totalMoney.toLocaleString()}
+        </label>
+      </p>
+      <input
+        type="range"
+        id="total-money-wanted"
+        name="total-money-wanted"
+        value={totalMoney}
+        onChange={handleInputChange}
+        min={0}
+        step={5000}
+        max={500000}
+      />
+    </div>
   );
 }

@@ -42,14 +42,8 @@ function InitialFormWithInputs({
       <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter text-center mb-12">
         How much do you want to make?
       </h1>
-      <p className="text-lg mt-4 text-slate-600 max-w-xl text-center">
-        I want to make{" "}
-        <strong>
-          $
-          <span aria-label="Total Money Wanted">
-            <TotalMoneyWanted />
-          </span>
-        </strong>{" "}
+      <TotalMoneyWanted />
+      <p>
         in{" "}
         <strong>
           <span aria-label="Number of Months">

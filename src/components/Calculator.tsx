@@ -15,6 +15,7 @@ import {
   getSalesPerMonth,
   getTotalSales,
 } from "@utils/store";
+import "./slider.css";
 
 /*
 

@@ -15,7 +15,7 @@ export function OfferingPrice() {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col items-center">
       <p className="text-lg mt-4 max-w-xl text-center">
         by selling a{" "}
         <label className="block font-bold text-center" htmlFor="offering-price">

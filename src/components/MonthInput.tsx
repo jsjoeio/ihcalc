@@ -16,7 +16,7 @@ export function MonthInput() {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col items-center">
       <p className="text-lg mt-4 max-w-xl text-center">
         in{" "}
         <label className="font-bold text-center" htmlFor="num-of-months">

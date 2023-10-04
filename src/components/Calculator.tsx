@@ -17,17 +17,6 @@ import {
 } from "@utils/store";
 import "./slider.css";
 
-/*
-
-I' thinking this is the app. and there are three states:
-- initial
-- calcuated 
-- error 
-
-And we have components for each
-
-*/
-
 type State = "initial" | "calculated" | "error";
 type InitialFormWithInputsProps = {
   state: State;
@@ -78,7 +67,7 @@ function TextCalculated({ reset }: TextCalculatedProps) {
         </p>
         <p>
           Assuming a <strong>{conversionRate}% conversion rate</strong>, you
-          need around <strong>{monthlyVisitors} visitors per month</strong>
+          need around <strong>{monthlyVisitors} visitors per month.</strong>
         </p>
       </div>
       <ActionButton onClick={reset} text="Start over" />

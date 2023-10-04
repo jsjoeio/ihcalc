@@ -2,7 +2,6 @@ import { useState } from "react";
 import { ActionButton } from "./ActionButton";
 import { TotalMoneyWanted } from "./TotalMoneyWanted";
 import { MonthInput } from "./MonthInput";
-import { Offering } from "./Offering";
 import { OfferingPrice } from "./OfferingPrice";
 import { useStore } from "@nanostores/react";
 import {
@@ -12,6 +11,7 @@ import {
   $totalMoneyWanted,
   getConversionRate,
   getMonthlyVisitors,
+  getSalesPerDay,
   getSalesPerMonth,
   getTotalSales,
 } from "@utils/store";
@@ -51,6 +51,7 @@ function TextCalculated({ reset }: TextCalculatedProps) {
   const offeringPrice = useStore($offeringPrice).toLocaleString();
   const totalSales = getTotalSales().toLocaleString();
   const salesPerMonth = getSalesPerMonth().toLocaleString();
+  const salesPerDay = getSalesPerDay().toLocaleString();
   const conversionRate = getConversionRate() * 100;
   const monthlyVisitors = getMonthlyVisitors().toLocaleString();
 
@@ -63,7 +64,8 @@ function TextCalculated({ reset }: TextCalculatedProps) {
       <div className="max-w-sm mx-auto text-center">
         <p className="mb-4">
           you need to make <strong>{totalSales} total sales</strong>, which is
-          roughly <strong>{salesPerMonth} sales per month</strong>.
+          roughly <strong>{salesPerMonth} sales per month</strong> which is{" "}
+          <strong>{salesPerDay} per day.</strong>
         </p>
         <p>
           Assuming a <strong>{conversionRate}% conversion rate</strong>, you

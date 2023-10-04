@@ -15,6 +15,11 @@ export function getSalesPerMonth() {
     return Math.round(getTotalSales() / $numOfMonths.get())
 }
 
+export function getSalesPerDay() {
+    const DAYS_IN_MONTH = 30;
+    return Math.round(getSalesPerMonth() /  DAYS_IN_MONTH);
+}
+
 export function getConversionRate() {
     return 0.02
 }

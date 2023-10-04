@@ -17,10 +17,8 @@ export function TotalMoneyWanted() {
   return (
     <div className="flex flex-col items-center">
       <p className="text-lg mt-4 max-w-xl text-center">
-        I want to make
-        <label
-          className="block font-bold text-center"
-          htmlFor="total-money-wanted">
+        I want to make{" "}
+        <label className="font-bold text-center" htmlFor="total-money-wanted">
           ${totalMoney.toLocaleString()}
         </label>
       </p>

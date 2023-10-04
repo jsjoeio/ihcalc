@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { ActionButton } from "./ActionButton";
 import { TotalMoneyWanted } from "./TotalMoneyWanted";
 import { MonthInput } from "./MonthInput";
 import { OfferingPrice } from "./OfferingPrice";
@@ -17,34 +15,7 @@ import {
 } from "@utils/store";
 import "./slider.css";
 
-type State = "initial" | "calculated" | "error";
-type InitialFormWithInputsProps = {
-  state: State;
-  setState: (state: State) => void;
-};
-
-function InitialFormWithInputs({
-  state,
-  setState,
-}: InitialFormWithInputsProps) {
-  return (
-    <div>
-      <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter text-center mb-4">
-        How much do you want to make?
-      </h1>
-      <TotalMoneyWanted />
-      <MonthInput />
-      <OfferingPrice />
-      <ActionButton onClick={() => setState("calculated")} text="Show me how" />
-    </div>
-  );
-}
-
-type TextCalculatedProps = {
-  reset: () => void;
-};
-
-function TextCalculated({ reset }: TextCalculatedProps) {
+function TextCalculated() {
   const totalMoney = useStore($totalMoneyWanted).toLocaleString();
   const numOfMonths = useStore($numOfMonths).toLocaleString();
   const selectedOffering = useStore($selectedOffering);
@@ -56,11 +27,11 @@ function TextCalculated({ reset }: TextCalculatedProps) {
   const monthlyVisitors = getMonthlyVisitors().toLocaleString();
 
   return (
-    <div>
-      <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold lg:tracking-tight xl:tracking-tighter text-center mb-12">
+    <div className="mt-14">
+      <p className="text-xl lg:text-2xl xl:text-3xl font-bold lg:tracking-tight xl:tracking-tighter text-center mb-4 mt-6">
         To make ${totalMoney} in {String(numOfMonths)} months by selling a $
         {offeringPrice} {selectedOffering}
-      </h1>
+      </p>
       <div className="max-w-sm mx-auto text-center">
         <p className="mb-4">
           you need to make <strong>{totalSales} total sales</strong>, which is
@@ -72,21 +43,20 @@ function TextCalculated({ reset }: TextCalculatedProps) {
           need around <strong>{monthlyVisitors} visitors per month.</strong>
         </p>
       </div>
-      <ActionButton onClick={reset} text="Start over" />
     </div>
   );
 }
 
-export function Calculator() {
-  const [state, setState] = useState<State>("initial");
-
-  if (state === "initial")
-    return <InitialFormWithInputs state={state} setState={setState} />;
-
-  if (state === "error") return <p>Oh no</p>;
-
-  if (state === "calculated")
-    return <TextCalculated reset={() => setState("initial")} />;
-
-  return null;
+export function CalculatorWithTextCalculated() {
+  return (
+    <div>
+      <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter text-center mb-4">
+        How much do you want to make?
+      </h1>
+      <TotalMoneyWanted />
+      <MonthInput />
+      <OfferingPrice />
+      <TextCalculated />
+    </div>
+  );
 }

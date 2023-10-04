@@ -34,9 +34,9 @@ function TextCalculated() {
       </p>
       <div className="max-w-sm mx-auto text-center">
         <p className="mb-4">
-          you need to make <strong>{totalSales} total sales</strong>, which is
-          roughly <strong>{salesPerMonth} sales per month</strong> which is{" "}
-          <strong>{salesPerDay} per day.</strong>
+          you need to make <strong>{totalSales} total sales</strong>, <br />
+          which is roughly <strong>{salesPerMonth} sales per month</strong>
+          <br /> or <strong>{salesPerDay} per day.</strong>
         </p>
         <p>
           Assuming a <strong>{conversionRate}% conversion rate</strong>, you

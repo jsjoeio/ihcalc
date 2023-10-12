@@ -7,6 +7,6 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://astroship.web3templates.com",
+  site: "https://ihcalc.vercel.app/",
   integrations: [tailwind(), mdx(), sitemap(), react()]
 });

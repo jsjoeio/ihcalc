@@ -12,7 +12,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 const resolvedImageWithDomain = new URL(
   "/opengraph.jpg",
-  Astro.site
+  Astro.site,
 ).toString();
 
 const { title } = Astro.props;
@@ -22,8 +22,8 @@ const makeTitle = title
   : "Astroship - Starter Template for Astro with Tailwind CSS";
 ---
 
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="bg-white">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />

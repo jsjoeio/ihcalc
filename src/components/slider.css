@@ -3,13 +3,12 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 input[type="range"] {
-  accent-color: black;
+  accent-color: #1C1B1A;
   cursor: pointer;
   width: 90%;
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
-  background-color: #6eabda;
-  /* background-color: #5d8fb6; */
+  background-color: #878580;
   height: 1rem;
 }

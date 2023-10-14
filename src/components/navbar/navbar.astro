@@ -1,19 +1,20 @@
 ---
 import Container from "@components/container.astro";
 import { Astronav } from "astro-navbar";
+import { Image } from "astro:assets";
+import logo from "../../assets/logo.svg";
 ---
 
 <Container>
   <header
     class="flex flex-col lg:flex-row justify-between items-center mt-5 mb-2">
     <Astronav>
-      <div class="flex w-full lg:w-auto items-center justify-between">
-        <span class="text-slate-500 text-sm"
-          >a project by <a href="https://lang.agency" target="_blank"
-            >lang.agency</a
-          ></span
-        >
-      </div>
+      <a
+        href="https://howmuchtomake.org"
+        class="flex w-full lg:w-auto items-center justify-between">
+        <Image src={logo} alt="logo" width="25" height="25" />
+        <span class="text-xs text-slate-500 ml-2">howmuchtomake.org</span>
+      </a>
     </Astronav>
   </header>
 </Container>

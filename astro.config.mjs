@@ -7,6 +7,6 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://ihcalc.vercel.app/",
+  site: "https://www.howmuchtomake.org/",
   integrations: [tailwind(), mdx(), sitemap(), react()]
 });

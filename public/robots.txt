@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ihcalc.vercel.app/sitemap-index.xml
+Sitemap: https://www.howmuchtomake.org/sitemap-index.xml

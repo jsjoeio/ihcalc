@@ -7,8 +7,3 @@ input[type="range"] {
   cursor: pointer;
   width: 90%;
 }
-
-input[type="range"]::-webkit-slider-runnable-track {
-  background-color: #878580;
-  height: 1rem;
-}

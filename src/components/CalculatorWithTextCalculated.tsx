@@ -14,6 +14,7 @@ import {
   getTotalSales,
 } from "@utils/store";
 import "./slider.css";
+import { QueryParamsWrapper } from "./QueryParamsWrapper";
 
 function TextCalculated() {
   const totalMoney = useStore($totalMoneyWanted).toLocaleString();
@@ -53,6 +54,7 @@ export function CalculatorWithTextCalculated() {
       <MonthInput />
       <OfferingPrice />
       <TextCalculated />
+      <QueryParamsWrapper />
     </div>
   );
 }

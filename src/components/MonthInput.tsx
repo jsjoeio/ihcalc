@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useStore } from "@nanostores/react"; // or '@nanostores/preact'
 import { $numOfMonths } from "@utils/store";
 
 export function MonthInput() {
   const numOfMonths = useStore($numOfMonths);
+
+  useEffect(() => {
+    console.log("running on first render");
+  }, []);
 
   const handleInputChange = (e) => {
     const inputValue = parseInt(e.target.value);

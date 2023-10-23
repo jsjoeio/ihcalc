@@ -18,7 +18,7 @@ export function TextCalculated({ state }: TextCalculatedProps) {
   }
 
   if (state === "error") {
-    return <p>somethingwent wrong </p>;
+    return <p>something went wrong </p>;
   }
 
   return null;

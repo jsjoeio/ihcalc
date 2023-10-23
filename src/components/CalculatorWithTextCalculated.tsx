@@ -27,14 +27,10 @@ function TextCalculated() {
   const monthlyVisitors = getMonthlyVisitors().toLocaleString();
 
   return (
-    <div className="mt-14">
-      <p className="text-xl lg:text-2xl xl:text-3xl font-bold lg:tracking-tight xl:tracking-tighter text-center mb-4 mt-6">
-        To make ${totalMoney} in {String(numOfMonths)} months by selling a $
-        {offeringPrice} {selectedOffering}
-      </p>
+    <div className="mt-10">
       <div className="max-w-sm mx-auto text-center">
         <p className="mb-4">
-          you need to make <strong>{totalSales} total sales</strong>, <br />
+          That means you need <strong>{totalSales} total sales</strong>, <br />
           which is roughly <strong>{salesPerMonth} sales per month</strong>
           <br /> or <strong>{salesPerDay} per day.</strong>
         </p>

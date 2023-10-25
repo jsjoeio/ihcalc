@@ -9,8 +9,14 @@ export interface Props {
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+console.log(Astro.request);
 
-const resolvedImageWithDomain = new URL("/og-image.png", Astro.site).toString();
+const query = new URL(Astro.url).searchParams;
+const v = query.get("v");
+console.log(query, v, "has paramsssssssssssssssssssssssss");
+const ogImage = v ? "og-image-other.png" : "og-image.png";
+
+const resolvedImageWithDomain = new URL(`/${ogImage}`, Astro.site).toString();
 
 const { title } = Astro.props;
 

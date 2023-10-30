@@ -1,71 +1,68 @@
 import fs from "fs/promises";
 import satori from "satori";
+import { html } from "satori-html";
 import sharp from "sharp";
-import type { APIRoute } from 'astro';
+import type { APIRoute } from "astro";
 
-export const get: APIRoute = async function get({ params, request }) {
-  const robotoData = await fs.readFile("./public/fonts/Roboto-Regular.ttf");
+export const get: APIRoute = async function get({ url, request }) {
+  const [totalMoney, numOfMonths, offeringPrice] = url.searchParams
+    .get("v")
+    ?.split("-").map(v => parseInt(v)) || [50000, 3, 50];
+  const interFont = await fs.readFile("./public/fonts/Inter-Regular.ttf");
+  const options = {
+    width: 1200,
+    height: 630,
+    fonts: [
+      {
+        name: "Inter",
+        data: interFont,
+      },
+    ],
+  };
+
+  // const offeringPriceAdjusted = offeringPrice.toLocaleString('en-US', {
+  //   style: 'currency',
+  //   currency: 'USD',
+  //   minimumFractionDigits: 0,
+  // });
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+  });
+
+  const markup = html`<div
+    style="height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: rgb(255, 252, 240);">
+    <div
+      style="display: flex; flex-direction: row; align-items: center; justify-content: space-around; width: 80%;">
+      <img src="https://picsum.photos/200/300" width="200" height="300" />
+      <div
+        style="display: flex; flex-direction: column; font-size: 32px; font-weight: 800;">
+        <div>
+          Make
+          ${formatter.format(totalMoney)}
+        </div>
+        <div>in ${numOfMonths.toLocaleString()} months selling</div>
+        <div>a ${formatter.format(offeringPrice)} product.</div>
+      </div>
+    </div>
+    <div style="font-size: 14px; font-weight: 500; margin-top: 24px;">
+      howmuchtomake.org
+    </div>
+  </div>`;
 
   const svg = await satori(
-    {
-      type: 'div',
-      props: {
-        style: {
-          height: '100%',
-          width: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: '#fff',
-          fontSize: 32,
-          fontWeight: 600,
-        },
-        children: [
-          {
-            type: 'svg',
-            props: {
-              width: '75',
-              viewBox: '0 0 75 65',
-              fill: '#000',
-              style: { margin: '0 75px' },
-              children: {
-                type: 'path',
-                props: {
-                  d: 'M37.59.25l36.95 64H.64l36.95-64',
-                },
-              },
-            },
-          },
-          {
-            type: 'div',
-            props: {
-              style: { marginTop: 40 },
-              children: 'Goodbye, World',
-            },
-          },
-        ],
-      },
-    },
-    {
-      width: 1200,
-      height: 630,
-      fonts: [
-        {
-          name: "Roboto",
-          data: robotoData,
-          weight: "normal",
-          style: "normal",
-        },
-      ],
-    }
+    // @ts-ignore
+    markup,
+    options
   );
-
   const png = await sharp(Buffer.from(svg)).png().toBuffer();
 
   return new Response(png, {
     headers: {
+      "Cache-Control": "max-age=31536000, immutable",
       "Content-Type": "image/png",
     },
   });
-}
+};

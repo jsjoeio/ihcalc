@@ -28,8 +28,6 @@ export function QueryParamsWrapper() {
 
     // Clear values from search params
     clearSearchParams();
-
-    console.log({ totalMoney, numOfMonths, offeringPrice });
   }, []);
 
   return null; // This component doesn't render anything

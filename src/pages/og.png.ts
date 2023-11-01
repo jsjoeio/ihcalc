@@ -49,7 +49,7 @@ export const get: APIRoute = async function get({ url, request }) {
         <div>a ${formatter.format(offeringPrice)} product.</div>
       </div>
     </div>
-    <div style="font-size: 14px; font-weight: 500; margin-top: 24px;">
+    <div style="font-size: 28px; font-weight: 500; margin-top: 24px;">
       howmuchtomake.org
     </div>
   </div>`;

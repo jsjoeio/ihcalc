@@ -16,6 +16,8 @@ export const get: APIRoute = async function get({ url, request }) {
       {
         name: "Inter",
         data: interFont,
+        weight: 500,
+        style: "normal"
       },
     ],
   };
@@ -33,12 +35,12 @@ export const get: APIRoute = async function get({ url, request }) {
   });
 
   const markup = html`<div
-    style="height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: rgb(255, 252, 240);">
+    style="height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: rgb(255, 252, 240); ">
     <div
       style="display: flex; flex-direction: row; align-items: center; justify-content: space-around; width: 80%;">
-      <img src="https://picsum.photos/200/300" width="200" height="300" />
+      <img src="https://res.cloudinary.com/jsjoeio/image/upload/v1698812392/logopng_wvhtza.png" width="300" height="300" />
       <div
-        style="display: flex; flex-direction: column; font-size: 32px; font-weight: 800;">
+        style="display: flex; flex-direction: column; font-size: 64px; font-weight: 800; font-family: 'Inter'">
         <div>
           Make
           ${formatter.format(totalMoney)}

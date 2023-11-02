@@ -3,36 +3,34 @@ import satori from "satori";
 import { html } from "satori-html";
 import sharp from "sharp";
 import type { APIRoute } from "astro";
+import interRegular from "../fonts/Inter-Regular.ttf"
+import interExtraBold from "../fonts/Inter-ExtraBold.ttf"
+import interLight from "../fonts/Inter-Light.ttf"
 
 export const GET: APIRoute = async function GET({ url, request }) {
   const [totalMoney, numOfMonths, offeringPrice] = url.searchParams
     .get("v")
     ?.split("-")
     .map((v) => parseInt(v)) || [50000, 3, 50];
-  const interRegular = await fs.readFile("./public/fonts/Inter-Regular.ttf");
-  const interExtraBold = await fs.readFile(
-    "./public/fonts/Inter-ExtraBold.ttf"
-  );
-  const interLight = await fs.readFile("./public/fonts/Inter-Light.ttf");
   const options = {
     width: 1200,
     height: 630,
     fonts: [
       {
         name: "Inter",
-        data: interRegular,
+        data: Buffer.from(interRegular),
         weight: 400,
         style: "normal",
       },
       {
         name: "Inter",
-        data: interExtraBold,
+        data: Buffer.from(interExtraBold),
         weight: 800,
         style: "normal",
       },
       {
         name: "Inter",
-        data: interLight,
+        data: Buffer.from(interLight),
         weight: 300,
         style: "normal",
       },

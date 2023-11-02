@@ -39,11 +39,6 @@ export const GET: APIRoute = async function GET({ url, request }) {
     ],
   };
 
-  // const offeringPriceAdjusted = offeringPrice.toLocaleString('en-US', {
-  //   style: 'currency',
-  //   currency: 'USD',
-  //   minimumFractionDigits: 0,
-  // });
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",

@@ -56,7 +56,7 @@ export const GET: APIRoute = async function GET({ url, request }) {
     <div
       style="display: flex; flex-direction: row; align-items: center; justify-content: space-around; width: 80%;">
       <img
-        src="https://res.cloudinary.com/jsjoeio/image/upload/v1698812392/logopng_wvhtza.png"
+        src="https://res.cloudinary.com/jsjoeio/image/upload/v1698885861/logopngnew_xtn75m.png"
         width="300"
         height="300" />
       <div

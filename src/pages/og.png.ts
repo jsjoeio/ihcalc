@@ -4,7 +4,7 @@ import { html } from "satori-html";
 import sharp from "sharp";
 import type { APIRoute } from "astro";
 
-export const get: APIRoute = async function get({ url, request }) {
+export const GET: APIRoute = async function GET({ url, request }) {
   const [totalMoney, numOfMonths, offeringPrice] = url.searchParams
     .get("v")
     ?.split("-")

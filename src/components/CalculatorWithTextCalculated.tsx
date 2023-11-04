@@ -1,12 +1,7 @@
 import { TotalMoneyWanted } from "./TotalMoneyWanted";
 import { MonthInput } from "./MonthInput";
 import { OfferingPrice } from "./OfferingPrice";
-import { useStore } from "@nanostores/react";
 import {
-  $numOfMonths,
-  $offeringPrice,
-  $selectedOffering,
-  $totalMoneyWanted,
   getConversionRate,
   getMonthlyVisitors,
   getSalesPerDay,
@@ -15,7 +10,7 @@ import {
 } from "@utils/store";
 import "./slider.css";
 import { QueryParamsWrapper } from "./QueryParamsWrapper";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import { PushableButton } from "./PushableButton";
 
 function TextCalculated() {
@@ -43,10 +38,6 @@ function TextCalculated() {
 }
 
 export function CalculatorWithTextCalculated() {
-  const totalMoney = useStore($totalMoneyWanted);
-  const numOfMonths = useStore($numOfMonths);
-  const offeringPrice = useStore($offeringPrice);
-
   return (
     <div>
       <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter text-center mb-4">
@@ -56,15 +47,7 @@ export function CalculatorWithTextCalculated() {
       <MonthInput />
       <OfferingPrice />
       <TextCalculated />
-      <PushableButton
-        onClick={async () => {
-          try {
-            const linkWithValues = `https://howmuchtomake.org/?v=${totalMoney}-${numOfMonths}-${offeringPrice}`;
-            await navigator.clipboard.writeText(linkWithValues);
-            toast.success("Copied to clipboard");
-          } catch (error) {}
-        }}
-      />
+      <PushableButton />
       <QueryParamsWrapper />
       <Toaster
         position="top-center"
@@ -83,6 +66,12 @@ export function CalculatorWithTextCalculated() {
           },
           success: {
             duration: 3000,
+          },
+          error: {
+            iconTheme: {
+              primary: "rgb(175, 48, 41)",
+              secondary: "#100F0F",
+            },
           },
         }}
       />

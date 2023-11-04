@@ -1,10 +1,13 @@
 import { useStore } from "@nanostores/react";
+import { CUSTOM_EVENT_CHANGE_TOTAL_MONEY_WANTED } from "@utils/constants";
 import { $totalMoneyWanted } from "@utils/store";
 
 export function TotalMoneyWanted() {
   const totalMoney = useStore($totalMoneyWanted);
 
   const handleInputChange = (e) => {
+    // @ts-expect-error - this is for Beam analytics
+    window.beam(CUSTOM_EVENT_CHANGE_TOTAL_MONEY_WANTED);
     const inputValue = parseInt(e.target.value.replace(/,/g, ""));
 
     // Check if the input value is a number greater than or equal to 0

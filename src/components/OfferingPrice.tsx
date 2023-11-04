@@ -1,10 +1,13 @@
 import { useStore } from "@nanostores/react";
+import { CUSTOM_EVENT_CHANGE_OFFERING_PRICE } from "@utils/constants";
 import { $offeringPrice } from "@utils/store";
 
 export function OfferingPrice() {
   const offeringPrice = useStore($offeringPrice);
 
   const handleInputChange = (e) => {
+    // @ts-expect-error - this is for Beam analytics
+    window.beam(CUSTOM_EVENT_CHANGE_OFFERING_PRICE);
     const inputValue = parseInt(e.target.value);
 
     // Check if the input value is a number greater than 1

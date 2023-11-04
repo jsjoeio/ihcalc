@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { useState, useEffect } from "react";
 import { useStore } from "@nanostores/react";
 import { $numOfMonths, $offeringPrice, $totalMoneyWanted } from "@utils/store";
+import { CUSTOM_EVENT_COPY_TO_CLIPBOARD } from "@utils/constants";
 
 const MESSAGES = [
   "Copied to clipboard",
@@ -24,6 +25,8 @@ export const PushableButton = () => {
 
   const handleClick = async () => {
     try {
+      // @ts-expect-error - this is for Beam analytics
+      window.beam(CUSTOM_EVENT_COPY_TO_CLIPBOARD);
       setClickCount((prevCount) => (prevCount + 1) % MESSAGES.length);
       const message = MESSAGES[clickCount];
       if (clickCount === 3) {

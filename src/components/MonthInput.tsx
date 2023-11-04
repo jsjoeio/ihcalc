@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { useStore } from "@nanostores/react"; // or '@nanostores/preact'
 import { $numOfMonths } from "@utils/store";
+import { CUSTOM_EVENT_CHANGE_MONTH_INPUT } from "@utils/constants";
 
 export function MonthInput() {
   const numOfMonths = useStore($numOfMonths);
@@ -11,6 +12,8 @@ export function MonthInput() {
   }, []);
 
   const handleInputChange = (e) => {
+    // @ts-expect-error - this is for Beam analytics
+    window.beam(CUSTOM_EVENT_CHANGE_MONTH_INPUT);
     const inputValue = parseInt(e.target.value);
 
     // Check if the input value is a number greater than 1

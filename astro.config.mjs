@@ -12,7 +12,11 @@ export default defineConfig({
   output: "server",
   adapter: vercel(),
   site: "https://www.howmuchtomake.org/",
-  integrations: [tailwind(), mdx(), sitemap(), react(), partytown()],
+  integrations: [tailwind(), mdx(), sitemap(), react(), partytown({
+    config: {
+      forward: ['beam'],
+    },
+  })],
   vite: {
     plugins: [rawFonts(['.ttf'])],
     build: {

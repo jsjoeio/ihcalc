@@ -12,9 +12,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 const query = new URL(Astro.url).searchParams;
 const v = query.get("v");
-const ogImage = v ? "og-image-other.png" : "og-image.png";
-
-const resolvedImageWithDomain = new URL(`/${ogImage}`, Astro.site).toString();
+const staticOgImage = new URL("/og-image.png", Astro.site).toString();
+const dynamicOgImage = new URL(`/og.png?v=${v}`, Astro.site).toString();
+const resolvedImageWithDomain = v ? dynamicOgImage : staticOgImage;
 
 const { title } = Astro.props;
 

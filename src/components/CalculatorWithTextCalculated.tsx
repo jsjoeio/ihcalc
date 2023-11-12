@@ -1,6 +1,8 @@
 import { TotalMoneyWanted } from "./TotalMoneyWanted";
 import { MonthInput } from "./MonthInput";
 import { OfferingPrice } from "./OfferingPrice";
+import { useStore } from "@nanostores/react";
+import { $numOfMonths, $offeringPrice, $totalMoneyWanted } from "@utils/store";
 import {
   getConversionRate,
   getMonthlyVisitors,
@@ -38,6 +40,10 @@ function TextCalculated() {
 }
 
 export function CalculatorWithTextCalculated() {
+  const totalMoney = useStore($totalMoneyWanted);
+  const numOfMonths = useStore($numOfMonths);
+  const offeringPrice = useStore($offeringPrice);
+
   return (
     <div>
       <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter text-center mb-4">
@@ -47,7 +53,11 @@ export function CalculatorWithTextCalculated() {
       <MonthInput />
       <OfferingPrice />
       <TextCalculated />
-      <PushableButton />
+      <PushableButton
+        totalMoney={totalMoney}
+        numOfMonths={numOfMonths}
+        offeringPrice={offeringPrice}
+      />
       <QueryParamsWrapper />
       <Toaster
         position="top-center"

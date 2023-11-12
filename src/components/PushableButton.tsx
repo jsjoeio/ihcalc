@@ -1,8 +1,6 @@
 import "./pushable-button.css";
 import toast from "react-hot-toast";
 import { useState, useEffect } from "react";
-import { useStore } from "@nanostores/react";
-import { $numOfMonths, $offeringPrice, $totalMoneyWanted } from "@utils/store";
 import { CUSTOM_EVENT_COPY_TO_CLIPBOARD } from "@utils/constants";
 
 const MESSAGES = [
@@ -12,10 +10,17 @@ const MESSAGES = [
   "Removed from your clipboard...",
 ];
 
-export const PushableButton = () => {
-  const totalMoney = useStore($totalMoneyWanted);
-  const numOfMonths = useStore($numOfMonths);
-  const offeringPrice = useStore($offeringPrice);
+type PushableButtonProps = {
+  totalMoney: number;
+  numOfMonths: number;
+  offeringPrice: number;
+};
+
+export const PushableButton = ({
+  totalMoney,
+  numOfMonths,
+  offeringPrice,
+}: PushableButtonProps) => {
   const [clickCount, setClickCount] = useState(0);
 
   useEffect(() => {

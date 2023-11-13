@@ -5,7 +5,7 @@ export const $selectedOffering = atom<string>("course")
 export const $offeringPrice = atom<number>(50)
 export const $totalMoneyWanted = atom<number>(50000)
 
-// const monthlyVisitors = 8350;
+const DAYS_IN_MONTH = 30;
 
 export function getTotalSales() {
     return Math.round($totalMoneyWanted.get() / $offeringPrice.get());
@@ -16,7 +16,6 @@ export function getSalesPerMonth() {
 }
 
 export function getSalesPerDay() {
-    const DAYS_IN_MONTH = 30;
     return Math.round(getSalesPerMonth() /  DAYS_IN_MONTH);
 }
 
@@ -26,4 +25,8 @@ export function getConversionRate() {
 
 export function getMonthlyVisitors() {
     return Math.round(getTotalSales() / getConversionRate());
+}
+
+export function getDailyVisitors() {
+    return Math.round(getMonthlyVisitors() / DAYS_IN_MONTH);
 }

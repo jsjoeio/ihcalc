@@ -32,7 +32,7 @@ export function TotalMoneyWanted() {
         onChange={handleInputChange}
         min={0}
         step={5000}
-        max={500000}
+        max={1000000}
       />
     </div>
   );

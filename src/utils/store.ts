@@ -24,7 +24,7 @@ export function getConversionRate() {
 }
 
 export function getMonthlyVisitors() {
-    return Math.round(getTotalSales() / getConversionRate());
+    return Math.round(getSalesPerDay() / getConversionRate());
 }
 
 export function getDailyVisitors() {

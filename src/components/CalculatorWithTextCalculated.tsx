@@ -2,7 +2,12 @@ import { TotalMoneyWanted } from "./TotalMoneyWanted";
 import { MonthInput } from "./MonthInput";
 import { OfferingPrice } from "./OfferingPrice";
 import { useStore } from "@nanostores/react";
-import { $numOfMonths, $offeringPrice, $totalMoneyWanted } from "@utils/store";
+import {
+  $numOfMonths,
+  $offeringPrice,
+  $totalMoneyWanted,
+  getDailyVisitors,
+} from "@utils/store";
 import {
   getConversionRate,
   getMonthlyVisitors,
@@ -21,6 +26,7 @@ function TextCalculated() {
   const salesPerDay = getSalesPerDay().toLocaleString();
   const conversionRate = getConversionRate() * 100;
   const monthlyVisitors = getMonthlyVisitors().toLocaleString();
+  const dailyVisitors = getDailyVisitors().toLocaleString();
 
   return (
     <div className="mt-10">
@@ -32,7 +38,8 @@ function TextCalculated() {
         </p>
         <p>
           Assuming a <strong>{conversionRate}% conversion rate</strong>, you
-          need around <strong>{monthlyVisitors} visitors per month.</strong>
+          need around <strong>{monthlyVisitors} visitors per month</strong> or{" "}
+          <strong>{dailyVisitors} per day.</strong>
         </p>
       </div>
     </div>

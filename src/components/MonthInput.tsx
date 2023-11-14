@@ -12,7 +12,7 @@ export function MonthInput() {
     if (!touched) {
       // User has touched the input, send analytics event
       // @ts-expect-error - this is for Beam analytics
-      window.beam(CUSTOM_EVENT_CHANGE_TOTAL_MONEY_WANTED);
+      window.beam(CUSTOM_EVENT_CHANGE_MONTH_INPUT);
       setTouched(true);
     }
 

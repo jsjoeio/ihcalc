@@ -6,14 +6,16 @@ import { CUSTOM_EVENT_CHANGE_MONTH_INPUT } from "@utils/constants";
 
 export function MonthInput() {
   const numOfMonths = useStore($numOfMonths);
-
-  useEffect(() => {
-    console.log("running on first render");
-  }, []);
+  const [touched, setTouched] = useState(false);
 
   const handleInputChange = (e) => {
-    // @ts-expect-error - this is for Beam analytics
-    window.beam(CUSTOM_EVENT_CHANGE_MONTH_INPUT);
+    if (!touched) {
+      // User has touched the input, send analytics event
+      // @ts-expect-error - this is for Beam analytics
+      window.beam(CUSTOM_EVENT_CHANGE_TOTAL_MONEY_WANTED);
+      setTouched(true);
+    }
+
     const inputValue = parseInt(e.target.value);
 
     // Check if the input value is a number greater than 1

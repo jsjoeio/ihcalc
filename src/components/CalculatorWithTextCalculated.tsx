@@ -36,7 +36,7 @@ function TextCalculated() {
           which is roughly <strong>{salesPerMonth} sales per month</strong>
           <br /> or <strong>{salesPerDay} per day.</strong>
         </p>
-        <p>
+        <p className="min-h-[72px]">
           Assuming a <strong>{conversionRate}% conversion rate</strong>, you
           need around <strong>{monthlyVisitors} visitors per month</strong> or{" "}
           <strong>{dailyVisitors} per day.</strong>

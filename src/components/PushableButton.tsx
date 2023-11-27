@@ -47,7 +47,7 @@ export const PushableButton = ({
 
   return (
     <button onClick={handleClick} className="pushable">
-      <span className="front">Share</span>
+      <span className="front">Copy Custom Link</span>
     </button>
   );
 };
